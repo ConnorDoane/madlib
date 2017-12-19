@@ -21,9 +21,9 @@ def select_mad_lib():
     user_selection = int(raw_input("\t> "))
     if user_selection in range(1, len(mad_libs)+1):
         user_selection = user_selection-1
+        return user_selection
     else:
         return "ERROR: Try inputting an integer"
-    return user_selection
 
 def run(mad_lib):
     if mad_lib == 0:
@@ -32,8 +32,10 @@ def run(mad_lib):
         return thanksgiving_output(fill_out_thanksgiving())
     elif mad_lib == 2:
         return graduation_output(fill_out_graduation())
-    else:
+    elif mad_lib == 3:
         return amusement_output(fill_out_amusement())
+    else:
+        return "ERROR"
 
 def fill_out_amusement():
     words = []
@@ -84,7 +86,7 @@ def amusement_output(words):
     final = ''
     for i in range(0, len(amusement_blank)):
         if amusement_blank[i] == '@':
-            final += words[current_word]
+            final += u"\u001b[4m" + words[current_word] + u"\u001b[0m"
             current_word += 1
         else:
             final += amusement_blank[i]
@@ -95,7 +97,7 @@ def graduation_output(words):
     final = ''
     for i in range(0, len(graduation_blank)):
         if graduation_blank[i] == '@':
-            final += words[current_word]
+            final += u"\u001b[4m" + words[current_word] + u"\u001b[0m"
             current_word += 1
         else:
             final += graduation_blank[i]
@@ -106,7 +108,7 @@ def thanksgiving_output(words):
     final = ''
     for i in range(0, len(thanksgiving_blank)):
         if thanksgiving_blank[i] == '@':
-            final += words[current_word]
+            final += u"\u001b[4m" + words[current_word] + u"\u001b[0m"
             current_word += 1
         else:
             final += thanksgiving_blank[i]
@@ -117,7 +119,7 @@ def christmas_output(words):
     final = ''
     for i in range(0, len(christmas_blank)):
         if christmas_blank[i] == '@':
-            final += words[current_word]
+            final += u"\u001b[4m" + words[current_word] + u"\u001b[0m"]
             current_word += 1
         else:
             final += christmas_blank[i]
